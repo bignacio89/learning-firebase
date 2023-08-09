@@ -1,0 +1,10 @@
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.paper {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+}
