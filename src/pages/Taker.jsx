@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, Container, List, ListItem, ListItemText, Button } from "@mui/material";
 import "./Taker.css";
 import { auth, db } from "../firebase/firebase";
 import { signOut } from "firebase/auth";
-import { addDoc, collection, serverTimestamp, onSnapshot, query } from "firebase/firestore"
+import { addDoc, collection, serverTimestamp} from "firebase/firestore"
 import { Link } from "react-router-dom";
 
 const Taker = () => {
@@ -20,20 +20,7 @@ const Taker = () => {
     { name: "Margherita", price: 10 },
     { name: "Pepperoni", price: 12 },
     { name: "Vegetarian", price: 11 },
-    // Add more pizzas to the menu as needed
   ];
-
-  useEffect(() => {
-    const queryOrders = query(ordersRef)
-    const unsuscribe = onSnapshot(queryOrders, (snapshot) => { 
-      let ordersKitchen = []
-      snapshot.forEach((doc) => {
-        ordersKitchen.push({ ...doc.data(), id:doc.id })
-      })
-      setOrders(ordersKitchen)
-    })
-    return () => unsuscribe()
-  },[]);
 
   const handleItemClick = (item) => {
     setCurrentItem(item.name);
